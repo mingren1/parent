@@ -1,0 +1,51 @@
+server:
+  port: 8886
+
+---
+server:
+  port: ${eureka-node1.port}
+spring:
+  profiles: ${eureka-node1.profile}
+eureka:
+  instance:
+    hostname: ${eureka-node1.eureka-host-name}
+  client:
+    service-url:
+      defaultZone: ${eureka-node2-url},${eureka-node3-url},${eureka-node4-url}
+
+---
+server:
+  port: ${eureka-node2.port}
+spring:
+  profiles: ${eureka-node2.profile}
+eureka:
+  instance:
+    hostname: ${eureka-node2.eureka-host-name}
+  client:
+    service-url:
+      defaultZone:  ${eureka-node1-url},${eureka-node3-url},${eureka-node4-url}
+
+
+---
+server:
+  port: ${eureka-node3.port}
+spring:
+  profiles: ${eureka-node3.profile}
+eureka:
+  instance:
+    hostname: ${eureka-node3.eureka-host-name}
+  client:
+    service-url:
+      defaultZone: ${eureka-node1-url},${eureka-node2-url},${eureka-node4-url}
+
+---
+server:
+  port: ${eureka-node4.port}
+spring:
+  profiles: ${eureka-node4.profile}
+eureka:
+  instance:
+    hostname: ${eureka-node4.eureka-host-name}
+  client:
+    service-url:
+      defaultZone: ${eureka-node1-url},${eureka-node2-url},${eureka-node3-url}

@@ -1,0 +1,20 @@
+feign:
+  ma:
+    rts_pubdata_server: https://pubdata.rtmap.com/rts_pubdata_server
+    rtmap-platform: https://dev.rtmap.com/rtmap-platform
+    rtmap-app: https://appmarketing.rtmap.com/rtmap-app
+    rtmap-coupon-web: https://coupon.rtmap.com/rtmap-coupon-web
+    pay-api: http://pay.rtmap.com/pay-api
+    mptools: https://mptools.rtmap.com
+  crm:
+    scrm-web-opr: https://apiscrm.rtmap.com/scrm-web-opr
+spring:
+  datasource:
+    url: jdbc:mysql://rm-2ze4cnb3fej5d3oi6.mysql.rds.aliyuncs.com:3306/common_app?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    druid:
+      username: rtmap_common_app
+      password: Rtmap_123456
+  redis:
+    host: dce441334dbc427e.m.cnbja.kvstore.aliyuncs.com
+    port: 6379
+    password: RtmapC10

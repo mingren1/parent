@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>middle-third</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<artifactId>parent</artifactId>
+		<groupId>com.rtmap.middle</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<name>third</name>
+	<description>中台对外统一接口【对接 泛会员、MA、ERP、本地CRM】</description>
+
+
+	<properties>
+		<project.mainClass>com.rtmap.middle.third.ThirdApplication</project.mainClass>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.rtmap.middle</groupId>
+			<artifactId>middle-framework</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+
+</project>

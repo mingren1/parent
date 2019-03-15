@@ -1,0 +1,6 @@
+server:
+  port: 8702
+
+spring:
+  redis:
+    database: 8

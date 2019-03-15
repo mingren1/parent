@@ -1,0 +1,72 @@
+middle:
+  third:
+    serverId: third
+
+server:
+  compression:
+    enabled: true
+  tomcat:
+    uri-encoding: utf-8
+  port: 8200
+
+zuul:
+  ribbon:
+    read-timeout: 6000
+    socket-timeout: 6000
+  strip-prefix: false
+  add-proxy-headers: true
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 10000
+  sensitive-headers: '*'
+  routes:
+    third:
+      path: /third/**
+    gateway:
+      path: /gateway/**
+    test:
+      path: /exchange_tjdgm/**
+      serviceId: exchange_tjdgm
+
+ribbon:
+  eager-load:
+    enabled: true
+feign:
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+#security:
+#  oauth2:
+#    resource:
+#      user-info-uri: http://localhost:${server.port}}/security/security/user
+#      prefer-token-info: false
+#    client:
+#      access-token-uri: http://localhost:${server.port}/security/security/token
+#      user-authorization-uri: http://localhost:${server.port}/security/security/authorize
+#spring:
+#  security:
+#    filter:
+#      order: 3
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

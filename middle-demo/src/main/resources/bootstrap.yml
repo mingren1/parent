@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: ${project.name}
+  cloud:
+    config:
+      profile: ${env}
+      uri: ${spring.cloud.config.uri}
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka-url}
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+server:
+  servlet:
+    context-path: ${context-path}

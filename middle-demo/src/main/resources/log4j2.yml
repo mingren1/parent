@@ -1,0 +1,31 @@
+# log4j2通用配置
+Configuration:
+  status: warn
+  Appenders:
+    Console:
+      name: CONSOLE
+      target: SYSTEM_OUT
+      ThresholdFilter:
+        level: ${log.level}
+        onMatch: ACCEPT
+        onMismatch: DENY
+      PatternLayout:
+        pattern: "${log.pattern}"
+    RollingFile: # 输出到文件，超过10MB归档
+      - name: ROLLING_FILE
+        ignoreExceptions: false
+        fileName: ${log.path}/${project.name}.log
+        filePattern: "${log.path}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
+        PatternLayout:
+          pattern: "${log.pattern}"
+        Policies:
+          SizeBasedTriggeringPolicy:
+            size: "10 MB"
+        DefaultRolloverStrategy:
+          max: 1000
+  Loggers:
+    Root:
+      level: ${log.level}
+      AppenderRef:
+        - ref: ROLLING_FILE
+        ${log.console}

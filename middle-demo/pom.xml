@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>middle-demo</artifactId>
+	<packaging>jar</packaging>
+
+	<parent>
+		<artifactId>parent</artifactId>
+		<groupId>com.rtmap.middle</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<name>scrm_exchange_1_10002</name>
+	<description>middle demo[参照 编码规则  scrmexchange_tenantType_tenantId]</description>
+
+
+	<properties>
+		<project.mainClass>com.rtmap.middle.demo.DemoApplication</project.mainClass>
+		<context-path>/scrm_exchange_1_10002</context-path>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.rtmap.middle</groupId>
+			<artifactId>middle-framework</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+
+</project>

@@ -1,0 +1,90 @@
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+spring:
+  datasource:
+    druid:
+      initial-size: 2
+      max-active: 100
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+          enabled: true
+        config:
+          enabled: true
+        wall:
+          enabled: true
+        encoding:
+          enabled: true
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        login-username: admin
+        login-password: admin
+  jackson:
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: true
+
+#应用市场广播
+message:
+  #活动组变更
+  on-activity-group-state-changed: test.topic.marketing.activityGroup.sync
+  #活动状态变更
+  on-activity-state-changed: test.topic.marketing.status.sync
+  #注券
+  on-coupon-inject: test.topic.voucher.coupon.sync
+  #券批状态变更通知
+  on-activity-coupon-state-changed: test.topic.coupon.activity.status.sync
+  #快速审核
+  on-acticity-coupon-review: test.topic.coupon.activity.status.quickReview.sync
+  #券批数量
+  on-activity-coupon-num-changed: test.topic.coupon.activity.update.num.sync
+  #券码状态变更通知
+  on-coupon-instance-code-state-changed: test.topic.coupon.instance.status.sync
+  #券批余量告警
+  on-activity-coupon-number-low: test.topic.coupon.activity.allowance.sync
+  #券种修改
+  on-coupon-changed: test.topic.coupon.update.sync
+  #预下单
+  on-cmallV2-pre-pay: test.queue.cmallv2.prepay
+
+#外部接口
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enable: true
+    maxConnections: 200
+
+# Mybatis配置
+#mybatis:
+#  mapper-locations: classpath:mappers/**/*.xml
+#  configLocation: classpath:mybatis.xml
+
+#pagehelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: pageNum=pageNum;pageSize=pageSize;count=countSql;
+  row-bounds-with-count: true
+
+#http连接池
+http-pool:
+  max-total: 200
+  default-max-pre-route: 100
+  connect-timeout: 5000
+  connection-request-timeout: 1000
+  socket-timeout: 65000
+  validate-after-inactivity: 200

@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: ${project.name}
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ./configs/,./configs/{profile}/,./configs/{application}/{profile}/
+        git:
+          uri: ${config.git.uri}
+          search-paths: middle*
+          username: ${git.config.username}
+          password: ${git.config.password}
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka-url}
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
